@@ -151,3 +151,4 @@ Then in your APK or AAR project that needs osmdroid.
     compile 'org.osmdroid:osmdroid-android:<VERSION>-SNAPSHOT:debug@aar'
 ```
 Where VERSION is the version listed as the value for `pom.version` in `gradle.properties`. Note that when using the release versions from Maven Central, drop the `:debug@aar` part. When using a "release" version that you build locally with gradle, you'll need `:debug@aar` instead.
+# So
