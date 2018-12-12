@@ -6,6 +6,7 @@ apply from: "https://raw.githubusercontent.com/gradle-fury/gradle-fury/v1.1.4/gr
 android {
     defaultConfig {
         applicationId 'org.osmdroid'
+        minSdkVersion 14
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     testOptions {
@@ -13,7 +14,7 @@ android {
             // All the usual Gradle options.
             testLogging {
                 events "passed", "skipped", "failed", "standardOut", "standardError"
-                outputs.upToDateWhen {false}
+                outputs.upToDateWhen { false }
                 showStandardStreams = true
             }
         }
@@ -23,6 +24,7 @@ android {
             java.srcDirs = ['../osmdroid-android-it/src/main/java']
         }
     }
+    buildToolsVersion '28.0.2'
 }
 
 
@@ -37,14 +39,19 @@ dependencies {
 
     compile 'com.github.angads25:filepicker:1.1.1'
 
-    compile "com.android.support:design:${project.property('android-support.version')}" //needed for UI menuing
-    compile "com.android.support:cardview-v7:${project.property('android-support.version')}"  //needed for samples only
-    compile "com.android.support:recyclerview-v7:${project.property('android-support.version')}" //needed for samples only
-    compile "com.android.support:appcompat-v7:${project.property('android-support.version')}" //needed for UI menuing
+    compile "com.android.support:design:${project.property('android-support.version')}"
+    //needed for UI menuing
+    compile "com.android.support:cardview-v7:${project.property('android-support.version')}"
+    //needed for samples only
+    compile "com.android.support:recyclerview-v7:${project.property('android-support.version')}"
+    //needed for samples only
+    compile "com.android.support:appcompat-v7:${project.property('android-support.version')}"
+    //needed for UI menuing
     //crash logging
     compile 'ch.acra:acra:4.7.0'
 
     //memory leak testing
+    compile 'com.android.support.constraint:constraint-layout:1.1.3'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
@@ -55,12 +62,11 @@ dependencies {
     androidTestCompile "com.android.support:support-annotations:${project.property('android-support.version')}"
 }
 
-
 //the following sets the required permissions for API 23+ devices and AVDs
 
 android.applicationVariants.all { variant ->
     if (variant.getBuildType().name == "debug") {
-        task "configDevice${variant.name.capitalize()}" (type: Exec){
+        task "configDevice${variant.name.capitalize()}"(type: Exec) {
             dependsOn variant.install
 
             group = 'nameofyourtaskgroup'
@@ -77,7 +83,7 @@ android.applicationVariants.all { variant ->
 
 android.applicationVariants.all { variant ->
     if (variant.getBuildType().name == "debug") {
-        task "configDevice2${variant.name.capitalize()}" (type: Exec){
+        task "configDevice2${variant.name.capitalize()}"(type: Exec) {
             dependsOn variant.install
 
             group = 'nameofyourtaskgroup'

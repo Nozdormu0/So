@@ -4,6 +4,7 @@ apply from: "https://raw.githubusercontent.com/gradle-fury/gradle-fury/v1.1.4/gr
 
 android {
 
+buildToolsVersion '28.0.2'
 }
 
 

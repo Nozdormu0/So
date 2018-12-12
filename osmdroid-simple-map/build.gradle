@@ -8,6 +8,7 @@ android {
         applicationId 'org.osmdroid.sample'
 
     }
+    buildToolsVersion '28.0.2'
 }
 
 

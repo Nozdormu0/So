@@ -65,9 +65,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         list.add("Diagnostics");
         list.add("View the intro again");
         list.add("Licenses");
+
         if (BuildConfig.VERSION_CODE >= 11)
             list.add("Cache Analyzer");
-
+        list.add("MyButton");
         ListView lv = (ListView) findViewById(R.id.activitylist);
         ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
 
@@ -140,6 +141,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     break;
                 }
             }
+            case 14:
+                this.startActivity(new Intent(this, SimpleActivity.class));
+                break;
         }
     }
 

@@ -5,9 +5,10 @@ buildscript {
         jcenter()
         mavenCentral()
         mavenLocal()
+        google()
     }
     dependencies {
-            classpath "com.android.tools.build:gradle:${project.property('android-plugin.version')}"
+            classpath 'com.android.tools.build:gradle:2.3.2'
     }
 }
 
@@ -37,6 +38,7 @@ allprojects {
         mavenLocal()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
         maven { url "http://repo.maven.apache.org/maven2" }
+        google()
     }
 
     tasks.withType(JavaCompile) {
